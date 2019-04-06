@@ -15,7 +15,7 @@ def load():
 
     numeric_transformer = Pipeline(steps=[
         ('imputer', SimpleImputer(strategy='median')),
-        #('scaler', StandardScaler())
+        #('scaler', StandardScaler(with_mean=False))
         ])
 
     categorical_transformer = Pipeline(steps=[
