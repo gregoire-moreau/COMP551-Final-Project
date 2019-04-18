@@ -140,6 +140,7 @@ for train_index, test_index in kf.split(adult_X):
     X_train, X_test = adult_X[train_index], adult_X[test_index]
     y_train, y_test = adult_Y[train_index], adult_Y[test_index]
     clf = LinearSVC(C = 1, tol = 1)
+    #clf = LinearSVC(C = 0.005, tol = 1) Linear SVM with higher lamda value for L2 regularizer
     #clf = LogisticRegression(C = 1, tol = 0.01)
     #ensem = RandomForestClassifier(clf)
     accuracy, prediction = optimize(X_test,y_test,clf)
@@ -162,7 +163,8 @@ for train_index, test_index in kf.split(german_X):
     print("GERMAN")
     X_train, X_test = german_X[train_index], german_X[test_index]
     y_train, y_test = german_Y[train_index], german_Y[test_index]
-    clf = LogisticRegression()
+    #clf = LogisticRegression(C=1000000000000, penalty='l2') C is set very large so that lamba is essentially zero and hence no regularization
+    clf = LogisticRegression(C=0.005, penalty='l2') Regularized Logistic Regression model
     #clf = LogisticRegression(C = 1, random_state=0, tol = 0.01, solver='lbfgs', multi_class='multinomial')
     #ensem = RandomForestClassifier(clf)
     accuracy, prediction = optimize(X_test,y_test,clf)
